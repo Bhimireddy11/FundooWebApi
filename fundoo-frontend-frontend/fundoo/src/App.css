@@ -1,0 +1,176 @@
+.App {
+  text-align: center;
+}
+.register{
+ 
+  align-items: center;
+    border-top: inset;
+    border-bottom: outset;
+    font-size: larger;
+     padding: 20px;
+     background-color: rgb(163, 185, 211);
+     height: 400px;
+     padding: 20px;
+     color: white;
+     border: 15px solid rgb(6, 169, 190);
+  color: white;
+}
+
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #252;
+  height: 150px;
+  padding: 20px;
+  color: white;
+  border: 15px solid rgb(46, 169, 190);
+}
+
+.App-intro {
+  font-size: large;
+}
+/* .login{
+  
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-left: 395px;
+  margin-top: 104px;
+
+  background-color: rgb(226, 215, 215);
+  width: 300px;
+  height:200px;
+  border: 15px solid rgb(46, 169, 190);
+  padding: 50px; 
+  margin: 200px
+} */
+@media all and (min-width: 480px) {
+  .Login {
+    padding: 60px 0;
+  }
+
+  .Login form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+}
+.password {
+
+  -webkit-text-security: circle;
+}
+.register{
+  color: crimson;
+  display: flex;
+  flex-direction: column;
+  align-items: center
+ }
+
+
+#email_card{
+  width: 216px;
+    height: 40px;
+    /* margin-left: 270px; */
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+#register, #login {
+  width: 300px;
+  border: 1px solid #d6d7da;
+  padding: 0px 15px 15px 15px;
+  border-radius: 5px;
+  font-family: arial;
+  line-height: 16px;
+  color: #333333;
+  font-size: 14px;
+  background: #ffffff;
+  margin: 100px auto;
+}
+#fundoo, #login {
+  width: 300px;
+  border: 1px solid #d6d7da;
+  padding: 0px 15px 15px 15px;
+  border-radius: 5px;
+  font-family: arial;
+  line-height: 16px;
+  color: #333333;
+  font-size: 14px;
+  background: #ffffff;
+  margin: 100px auto;
+}
+
+form label, form input {
+  display: block;
+  margin-bottom: 10px;
+  width: 90%
+}
+
+form input {
+  padding: 10px;
+  border: solid 1px #BDC7D8;
+
+}
+.fundoo {
+  width: 300px;
+  height: 100px;  
+  padding: 50px;
+  border: 1px solid red;
+}
+
+.button {
+  background-color: #00BFFF;
+  border-color: #3ac162;
+  font-weight: bold;
+  padding: 12px 15px;
+  color: #ffffff;
+}
+
+.errorMsg {
+  color: #cc0000;
+  margin-bottom: 12px;
+}
+.div{
+  width: 377px;
+    height: 97px;
+    padding: 209px;
+    border: 46px;
+    border-top-style: hidden;
+}
+
+@media all and (min-width: 480px) {
+  .ResetPassword {
+    padding: 60px 0;
+  }
+
+  .ResetPassword form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+
+  .ResetPassword .success {
+    max-width: 400px;
+  }
+}
+
+.ResetPassword .success {
+  margin: 0 auto;
+  text-align: center;
+}
+.ResetPassword .success .glyphicon {
+  color: grey;
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+.Login form a {
+  margin-bottom: 15px;
+  display: block;
+  font-size: 14px;
+}
