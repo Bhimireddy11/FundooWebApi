@@ -7,10 +7,10 @@ import Register from './Component/Register';
 import  ForgotPassword  from './Component/ForgotPassword';
 import './App.css';
 import UpdatePassword from './Component/UpdatePassword';
-import SideNav from './Component/SideNav';
-//import Dashboard from './Component/dashboard';
-//import Header from './Component/Header';
-//import Appbar from './Component/Appbar';
+import PrimarySearchAppBar from './Component/AppBar';
+import Dashboard from './Component/Dashboard';
+import SideNavBar from './Component/SideBar';
+
 
   class App extends Component {
   render() {
@@ -21,10 +21,9 @@ import SideNav from './Component/SideNav';
       <Route path="/Register" component={Register}></Route>
        <Route path="/ForgotPassword" component={ForgotPassword}></Route>
        <Route path="/UpdatePassword" component={UpdatePassword}></Route>
-       <Route path="/SideNav" component={SideNav}></Route>
-       {/* <Route path="/dashboard" component={Dashboard}></Route> */}
-       {/* <Route path="/Appbar" component={Appbar}></Route> */}
-       {/* <Route path="/Header" component={Header}></Route> */}
+     <Route path="/Dashboard" component={Dashboard}></Route>   
+     {/* 
+      */}
         </Router>
         </Switch>
     )

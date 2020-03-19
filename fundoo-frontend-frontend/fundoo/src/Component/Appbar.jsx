@@ -1,187 +1,315 @@
-import React, { Component } from 'react'
+import React from 'react';
+import { fade, makeStyles, useTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
-import { MuiThemeProvider, createMuiTheme, IconButton } from '@material-ui/core';
-import RefreshIcon from '@material-ui/icons/Refresh';
-import AppsIcon from '@material-ui/icons/Apps';
-// import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import Badge from '@material-ui/core/Badge';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
-import ClearIcon from '@material-ui/icons/Close'
 import SearchIcon from '@material-ui/icons/Search';
-import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
-import ViewAgendaIcon from '@material-ui/icons/ViewAgenda';
-import ViewColumnIcon from '@material-ui/icons/ViewColumn';
-//import Logout from '../Components/Logout';
-import { withRouter } from 'react-router-dom'
-import SideNav from '../Component/SideNav';
-import controller from '../Controller/noteController';
-
-const theme = createMuiTheme({
-    overrides: {
-        MuiAppBar: {
-            colorPrimary: {
-                color: "black",
-                view: true,
-
-            },
-            // height: "48px",
-        },
-    }
-})
-class Appbar extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            drawer: true,
-            drawerClose: false,
-            searchedTitle: '',
-            searchedNotes: []
-
-        }
-    }
-
-
-    handleRefresh = () => {
-        window.location.reload();
-    }
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import MailIcon from '@material-ui/icons/Mail';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import { Grid, TextField } from '@material-ui/core';
+import RefreshIcon from '@material-ui/icons/Refresh';
+import SettingsIcon from '@material-ui/icons/Settings';
+import AppsIcon from '@material-ui/icons/Apps';
+import AppsTwoToneIcon from '@material-ui/icons/AppsTwoTone';
+import clsx from "clsx";
 
 
 
+const drawerWidth = 244;
 
+const useStyles = makeStyles(theme => ({
+    root: {
+        display: "flex"
+    },
 
-    handleView = () => {
-        this.setState({
-            view: !this.state.view
+    appBar: {
+        transition: theme.transitions.create(["margin", "width"], {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen
         })
-        this.props.viewprop(true)
-        console.log(this.state.view)
+    },
+    appBarShift: {
+        transition: theme.transitions.create(["margin", "width"], {
+            easing: theme.transitions.easing.easeOut,
+            duration: theme.transitions.duration.enteringScreen
+        })
+    },
+    hide: {
+        display: "none"
+    },
+    drawer: {
+        width: drawerWidth,
+        flexShrink: 0
+    },
+    drawerPaper: {
+        top: "79px",
+        width: drawerWidth
+    },
+
+    drawerHeader: {
+        display: "flex",
+        alignItems: "center",
+        padding: theme.spacing(0, 1),
+        ...theme.mixins.toolbar,
+        justifyContent: "flex-end"
+    },
+    content: {
+        flexGrow: 1,
+        padding: theme.spacing(3),
+        transition: theme.transitions.create("margin", {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen
+        }),
+        marginLeft: -drawerWidth
+    },
+    contentShift: {
+        transition: theme.transitions.create("margin", {
+            easing: theme.transitions.easing.easeOut,
+            duration: theme.transitions.duration.enteringScreen
+        }),
+        marginLeft: 0
+    },
+    palette: {
+        backgroundColor: '#fafafa'
+    },
+    grow: {
+        flexGrow: 1,
+    },
+    menuButton: {
+        marginRight: theme.spacing(2),
+    },
+    title: {
+        display: 'none',
+        [theme.breakpoints.up('sm')]: {
+            display: 'block',
+        },
+    },
+    search: {
+        position: 'relative',
+        borderRadius: theme.shape.borderRadius,
+        backgroundColor: fade(theme.palette.common.white, 0.15),
+        '&:hover': {
+            backgroundColor: fade(theme.palette.common.white, 0.25),
+        },
+        marginRight: theme.spacing(2),
+        width: '50%',
+        [theme.breakpoints.up('sm')]: {
+            marginLeft: theme.spacing(3),
+            width: 'auto',
+        },
+    },
+    searchIcon: {
+        width: theme.spacing(7),
+        height: '100%',
+        position: 'absolute',
+        pointerEvents: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    inputRoot: {
+        color: 'inherit',
+    },
+    inputInput: {
+        padding: theme.spacing(1, 1, 1, 7),
+        transition: theme.transitions.create('width'),
+        width: '100%',
+        [theme.breakpoints.up('md')]: {
+            width: 200,
+        },
+    },
+    sectionDesktop: {
+        display: 'none',
+        [theme.breakpoints.up('md')]: {
+            display: 'flex',
+        },
+    },
+    sectionMobile: {
+        display: 'flex',
+        [theme.breakpoints.up('md')]: {
+            display: 'none',
+        },
+    },
+}));
+
+export default function PrimarySearchAppBa(props) {
+    const classes = useStyles();
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+
+    const isMenuOpen = Boolean(anchorEl);
+    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+    const theme = useTheme();
+
+    const [open, setOpen] = React.useState(false);
+
+    const handleProfileMenuOpen = event => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleMobileMenuClose = () => {
+        setMobileMoreAnchorEl(null);
+    };
+
+    const handleMenuClose = () => {
+        setAnchorEl(null);
+        handleMobileMenuClose();
+    };
+
+    const handleSignout = () => {
 
     }
 
 
+    const handleMobileMenuOpen = event => {
+        setMobileMoreAnchorEl(event.currentTarget);
+    };
 
+    const menuId = 'primary-search-account-menu';
+    const renderMenu = (
+        <Menu
+            anchorEl={anchorEl}
+            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+            id={menuId}
+            keepMounted
+            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+            open={isMenuOpen}
+            onClose={handleMenuClose}
+        >
+            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+            <MenuItem onClick={handleMenuClose}>Sign out</MenuItem>
+        </Menu>
+    );
 
-    handleDrawerOpen = async () => {
-        await this.setState({ drawer: !this.state.drawer })
-        this.props.slide(this.state.drawer)
+    const mobileMenuId = 'primary-search-account-menu-mobile';
+    const renderMobileMenu = (
+        <Menu
+            anchorEl={mobileMoreAnchorEl}
+            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+            id={mobileMenuId}
+            keepMounted
+            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+            open={isMobileMenuOpen}
+            onClose={handleMobileMenuClose}
+        >
+            <MenuItem>
+                <IconButton aria-label="show 4 new mails" color="inherit">
+                    <Badge badgeContent={4} color="secondary">
+                        <MailIcon />
+                    </Badge>
+                </IconButton>
+                <p>Messages</p>
+            </MenuItem>
+            <MenuItem>
+                <IconButton aria-label="show 11 new notifications" color="inherit">
+                    <Badge badgeContent={11} color="secondary">
+                        <NotificationsIcon />
+                    </Badge>
+                </IconButton>
+                <p>Notifications</p>
+            </MenuItem>
+            <MenuItem onClick={handleProfileMenuOpen}>
+                <IconButton
+                    aria-label="account of current user"
+                    aria-controls="primary-search-account-menu"
+                    aria-haspopup="true"
+                    color="inherit"
+                >
+                    <AccountCircle />
+                </IconButton>
+                <p>Profile</p>
+            </MenuItem>
+        </Menu>
+    );
 
-    }
-    handleClickCloseAway = () => {
-        this.setState({ drawer: false })
+    return (
+        <Grid>
+            <div className={classes.root}>
+                <AppBar position="fixed" className={classes.palette}>
 
-        // this.props.slideClose(this.state.drawer)
-    }
+                    <Toolbar>
+                        <Grid item xs={1} style={{ marginTop: '-15px', marginLeft: '10px' }}>
 
+                            <IconButton
+                                edge="start"
+                                className={classes.menuButton}
+                                color="inherit"
+                                aria-label="open drawer"
+                                className={clsx(classes.menuButton, open)}
+                                onClick={props.handleDraweropen}
+                            >
+                                <MenuIcon style={{ color: '#424242' }} />
+                            </IconButton>
+                        </ Grid>
+                        <Grid item xs={1} style={{
+                            marginLeft: '-70px',
+                            marginTop: '5px'
+                        }}>
+                            <div>
+                                <img src={"https://www.gstatic.com/images/branding/product/1x/keep_48dp.png"} alt="Logo" />
+                            </div>
+                        </Grid>
+                        <Grid style={{
+                            marginLeft: '-60px',
+                            marginBottom: '-8px'
+                        }}>
 
-    handleSearch = () => {
-        this.props.history.push("/search")
-    }
+                            <Typography style={{ color: '#616161', fontSize: '150%', marginLeft: '40px', marginTop: '-8px' }} className={classes.title} variant="h6" noWrap>
+                                Fundoo</Typography>
 
-
-
-    handleSeachState = async (e) => {
-        // await this.setState({
-        //     searchedTitle: e.target.value 
-        // })
-        //console.log(e.target.value)
-        controller.search(e.target.value).then((res) => {
-            console.log(res.data);
-            this.setState({
-                searchedNotes: res.data.obj
-            });
-            this.props.appToDisplay(this.state.searchedNotes)
-        }).catch((err) => {
-            console.log("in error");
-            console.log("error", err.data);
-            this.setState({ message: 'failed to load the data' })
-        });
-
-
-    }
-
-
-    render() {
-        return (
-            <MuiThemeProvider theme={theme}>
-                <div className="appBar-main">
-                    <AppBar >
-                        <Toolbar className="appBar-tool" >
-                            <div className="fulldiv">
-
-                                <div className="icons">
-                                    <div>
-                                        < IconButton onClick={this.handleDrawerOpen} >
-                                            <MenuIcon />
-                                        </ IconButton>
-                                        <SideNav menu={this.state.drawer} />
-                                    </div>
-                                    <div className="logo">
-                                        <img width="40px" height="40px" src={require('../Assets/keep.jpg')}></img>
-                                    </div>
-                                    <span className="name">Fundoo</span>
+                        </Grid>
+                        <Grid style={{ marginLeft: '15px', marginTop: '9px' }}>
+                            <div className={classes.search}>
+                                <div className={classes.searchIcon}>
+                                    <SearchIcon style={{ paddingRight: '50%' }} />
                                 </div>
-                                <div className="search">
-                                    <div className="searchIcon">
-                                        <IconButton >
-                                            <SearchIcon />
-                                        </IconButton>
-                                    </div>
-                                    <div className="inputField">
-                                        <InputBase
-                                            className="inputField"
-                                            placeholder="Search....."
-                                            //value={this.state.search}
-                                            onClick={this.handleSearch}
-                                            onChange={this.handleSeachState}
+                                <InputBase className="input-text"
+                                    type="searchIcon"
+                                    placeholder="Search" />
+                            </div>
+                        </Grid>
+                        <Grid style={{ marginLeft: '595px' }}>
+                            <div className={classes.grow} />
+                            <div className={classes.sectionDesktop}>
+                                <IconButton aria-label="show 4 new mails" color="inherit">
+                                    <RefreshIcon style={{ color: '#424242', paddingBottom: '65%' }} />
+                                </IconButton>
 
-                                        />
-                                    </div>
-                                    <div className="cancelButton">
-                                        <IconButton >
-                                            <ClearIcon />
-                                        </IconButton>
-                                    </div>
-                                </div>
-                                <div className="middleOne">
-                                    <div className="refreshIcon">
-                                        <IconButton onClick={this.handleRefresh}>
-                                            <RefreshIcon />
-                                        </IconButton>
-                                    </div>
-                                    <div>
+                                <IconButton aria-label="show 17 new notifications" color="inherit">
+                                    <SettingsIcon style={{ color: '#424242', paddingBottom: '65%' }} />
+                                </IconButton>
 
-                                        <IconButton onClick={this.handleView}>
-                                            {this.state.view ? <ViewAgendaIcon /> : <ViewColumnIcon />}
-                                        </IconButton>
+                                <IconButton>
+                                    <AppsTwoToneIcon style={{ color: '#424242', paddingBottom: '65%' }} />
+                                </IconButton>
 
-                                    </div>
-                                    <div>
-                                        <IconButton >
-                                            <SettingsOutlinedIcon />
-                                        </IconButton>
-                                    </div>
-                                </div>
-                                <div className="lastIcons">
-                                    <div>
-                                        <IconButton >
-                                            <AppsIcon />
-                                        </IconButton>
-                                    </div>
-                                    {/* <Logout></Logout> */}
-                                </div>
-
+                                <IconButton
+                                    edge="end"
+                                    aria-label="account of current user"
+                                    aria-controls={menuId}
+                                    aria-haspopup="true"
+                                    onClick={handleProfileMenuOpen}
+                                    color="inherit"
+                                >
+                                    <AccountCircle style={{ color: '#424242', paddingBottom: '65%' }} />
+                                </IconButton>
 
                             </div>
+                        </Grid>
 
-
-                        </Toolbar>
-
-                    </AppBar>
-
-                </div></MuiThemeProvider>
-        )
-    }
+                    </Toolbar>
+                </AppBar>
+                {renderMobileMenu}
+                {renderMenu}
+            </div>
+        </Grid>
+    );
 }
-export default withRouter(Appbar);

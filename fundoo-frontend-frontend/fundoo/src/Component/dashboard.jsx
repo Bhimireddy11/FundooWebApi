@@ -1,56 +1,86 @@
 
- 
-import React, { Component } from 'react'
-import { Divider } from '@material-ui/core'
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
-import { fade, makeStyles,classes } from '@material-ui/core/styles';
-//import MenuIcon from '@material-ui/icons/Menu';
-//import SearchIcon from '@material-ui/icons/Search';
+import React, { Component } from "react";
+import {withRouter} from 'react-router-dom'
+//import AppNavBar from "./AppBar";
+//import SideNavBar from "./SideBar";
 
 
 
-export default class Dashboard extends Component {
-    render() {
-        return (
+ class Dashboard extends Component {
+    constructor(props) {
+         super(props);
+         this.state = {
+         open: true,
+        
+        notesOpen: true,
+        openDialog:false,
+        getNoteArr: []
+
+    };
+   }
+
+   handleDialogClose = data => {
+    this.setState({ openDialog: false });
+  };
+     
+   handleDraweropen = () => {
+
+    this.setState({ open: !this.state.open })
+}
+
+render()
+{
+    console.log("Daashboar-----------");
+    return(
+        <div>
+
             <div>
-                <h1>Fundoonotes</h1>
-                <Divider></Divider> 
-                <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            {/* <MenuIcon /> */}
-          </IconButton>
-          
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
-}
+                <AppNavBar handleDraweropen={this.handleDraweropen} />
                 
+                {/* <Note
+                style={{ display: "flex"}}/> */}
+
+                </div>
+
+                <div style={{ display: "flex", background: "" }} >       
+              <SideNavBar 
+                show={this.state.open}
+              handleDialogOpen={this.handleDialogOpen} />
+           
+            
             </div>
-        )
-    }
+        </div>
+
+    )
 }
+
+
+
+
+}
+
+
+
+
+
+
+
+
+    
+//      render() 
+     
+//      {
+//          return(
+//              <div className="dashboard">
+//                  <h1>Welcome to react fundoo notes---------Laravel+react</h1>
+//                  <h1>Welcome to BridgeLabz</h1>
+                
+//      </div>
+//          )
+//      }
+      
+// }
+
+
+export default withRouter(Dashboard)
+
