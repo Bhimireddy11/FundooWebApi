@@ -1,0 +1,5 @@
+.reminder-card{
+    z-Index:5003;
+    position:'absolute';
+    background-color:'red';
+}

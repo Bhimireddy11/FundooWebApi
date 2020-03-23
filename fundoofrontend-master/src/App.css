@@ -1,0 +1,282 @@
+.bars :hover{
+  border: 1px solid black;
+}
+.search-field{
+  width: 70%;
+  background: transparent;
+  border: 0px;
+  /* border-bottom: 1px solid whitesmoke; */
+  color:whitesmoke;
+  font-size: 20px;
+  font-family: 'Roboto',sans-serif;
+}
+.col-sm-10 input:focus{
+  background: none;
+  outline: none;
+}
+.search-field:focus{
+  outline-color: transparent;
+}
+.fa-refresh{
+  font-size: 20px;
+}
+.list-grid{
+  font-size: 20px;
+  color: whitesmoke;
+}
+
+.sidebar-tour{
+  width: 100%;
+  height: 540px;
+  border: 1px solid whitesmoke;
+}
+.main-content{
+  border: 2px solid whitesmoke;
+}
+/* CSS for Create Note */
+.collapsible {
+  width: 100%;
+  background-color:transparent;
+  color: black;
+  cursor: pointer;
+  border: none;
+  text-align: left;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+.active, .collapsible:hover {
+  outline:none;
+  border: none;
+}
+.note-content {
+  width: 100%;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+.note-container{
+  margin-top: 5%;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+.notes{
+  box-shadow: 0px 0px 00px 1.5px black;
+}
+.note-fa{
+  padding: 7px;
+}
+.closeBtn{
+  background-color: transparent;
+}
+.desc-icon{
+    background-color: white;
+    border-radius: 5px;
+}
+/*------------*/
+.noteComponent {
+  margin-top: 35%;
+}
+.inputbase {
+  padding: 11px 13 7px;
+  font-size: 15px;
+}
+.button-icon {
+  /* margin-top: 2%;
+ padding: 5px; */
+ display: flex;
+}
+
+/*Header*/
+.has-search .form-control {
+padding-left: 2.375rem;
+margin-top:1.5px;
+height:50px;
+background-color: #f1f3f4;
+border-radius: 8px;
+}
+
+.has-search .form-control-feedback {
+position: absolute;
+z-index: 2;
+display: block;
+width: 2.375rem;
+height: 2.375rem;
+line-height: 2.2;
+text-align: center;
+pointer-events: none;
+color:gray;
+font-size: 22px;
+}
+
+.row.header{
+padding-bottom: 3px;
+border: 1px solid whitesmoke;
+}
+.form-control ::placeholder{
+font-size: 25px;
+}
+
+/* Note */
+.pin-icon{
+height: 32px;
+width: 32px;
+font-size: 22px;
+cursor: pointer;
+opacity: 0.8;
+text-align: center;
+border:none;
+border-radius: 50%;
+}
+.pin-icon :hover{
+width: 100%;
+height: 100%;
+border-radius: 50%;
+padding: 5px;
+background-color: gainsboro;
+}
+.icon-div-content{
+padding:5px 9.2px 0px 17px
+}
+/* ModalBox*/
+.modal-main-div{
+left: 185.5px;
+top: 128.425px;
+}
+
+/* ADD LABEL*/
+.add-label-content .label-content:hover{
+background-color: gray;
+display: block;
+cursor: pointer;
+}
+/* New Code for Dashboard*/
+.new-nav{
+top: 0;
+left: 0;
+position: fixed;
+width: 100%;
+z-index: 1059 !important;
+background-color: #fff;
+}
+
+.content-main{
+width:100%;
+padding-left: 22%;
+display: flex;
+flex-direction: column;
+}
+.note-create-content{
+border-radius: 8px;
+}
+
+.notelist-content{
+  padding: 0 10%;
+}
+.reminder-div{
+  padding:5px 12px;
+  width:208px;
+}
+.reminder-save-btn{
+  border: none;
+  background: none;
+  outline: none;
+  padding-right: 11px;
+  margin-top: 3px;
+  font-weight: bold;
+}
+.reminder-input{
+  background-color: transparent;
+  border: none;
+  height: 25px;
+  outline: none;
+  padding: 0;
+}
+.icon-list{
+  display: flex;
+  cursor: pointer;
+}
+.colorBtn{
+  width: 40px;
+  height: 40px;
+  border-radius:50%;
+  margin: 0 2px;
+  padding:6px 0 0 12px;
+}
+/*-------------Responsive-------------------*/
+@media(min-width:1024px){
+  .col-sm-3{
+    padding-left: 25px !important;
+  }    
+}
+@media(max-width:768px){
+  .note-create-content{
+    margin-top: 10px !important;
+  }
+  .col-sm-3 span{
+    font-size: 22px !important;
+    padding-left: 16px;
+  }
+  .notelist-content{
+    margin-top: 15px !important;
+  }
+  #my-navbar{
+    width: 25% !important;
+  }
+
+  .has-search .form-control {
+    padding-left: 2rem !important;
+    height:40px !important;
+  }
+  .has-search .form-control-feedback {
+    width: 2.35rem !important;
+    height: 2.35rem !important;
+    font-size: 20px !important;
+  }
+  .right-content{
+    margin-left: -27px !important;
+  }
+  .side-drawer-header{
+    padding:10px 0px !important;
+    margin-left: 16px !important;
+  }
+  .label-list{
+    margin-left: 15px !important;
+  } 
+}
+@media(min-height: 20px){
+  .size-resize{
+    background-color: red;
+  }
+  .register{
+    color: crimson;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+   }
+  
+  
+  #email_card{
+    width: 216px;
+      height: 40px;
+      /* margin-left: 270px; */
+  }
+  
+  @keyframes App-logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  #register, #login {
+    width: 300px;
+    border: 1px solid #d6d7da;
+    padding: 0px 15px 15px 15px;
+    border-radius: 5px;
+    font-family: arial;
+    line-height: 16px;
+    color: #333333;
+    font-size: 14px;
+    background: #ffffff;
+    margin: 100px auto;
+  }
+  
+}
