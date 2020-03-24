@@ -112,9 +112,9 @@ class Header extends Component {
                                 />
                                 </div>
 
-                            <Button type="file" variant={"light"} style={{backgroundColor: '#eceff1'}}
+                            {/* <Button type="file" variant={"light"} style={{backgroundColor: '#eceff1'}}
                                     // onClick={logout}
-                                    >Logout</Button>
+                                    >Logout</Button> */}
                         </div>
                     </Dropdown.Menu>
                 </Dropdown>
