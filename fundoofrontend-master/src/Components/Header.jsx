@@ -101,7 +101,7 @@ class Header extends Component {
                                 </MyToolTip>
                             </div>
                             <div style={{marginTop:'17px', display:'flex', flexDirection:'column',fontWeight:'normal'}}>
-                                  <span>Amit Kumar</span>
+                                  <span>raji bhimireddy</span>
                                   <span>{localStorage.getItem('emailId')}</span>
                                 </div>
                             <div className="w-100 mb-2 border-bottom">
