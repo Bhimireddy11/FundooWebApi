@@ -10,7 +10,7 @@ export default function CollaboratorModal(props) {
     newEmail: [],
     noteId: 0,
     removeEmail: []
-  });
+  }); 
   const [cList, setCList] = useState(props.collaboratorList);
 
   const addCollaborator = e => {
@@ -68,7 +68,7 @@ export default function CollaboratorModal(props) {
                     <div className="colab-owner-content">
                       <img
                         src=" "
-                        alt=" "
+                        alt="logo"
                         style={{
                           borderRadius: "50%",
                           width: "40px",
@@ -91,10 +91,10 @@ export default function CollaboratorModal(props) {
               {cList.map((colabEmail, id) => (
                 <div key={id} style={{ fontSize: "13px" }}>
                   <div style={{ display: "flex", padding: "5px" }}>
-                    <div className="colab">
+                    <div className="colab-owner">
                       <div className="colab-owner-content">
                         <img
-                          src=" "
+                          src="../keep.png"
                           alt="logo"
                           width="40px"
                           height="40px"
@@ -193,4 +193,5 @@ export default function CollaboratorModal(props) {
       </div>
     </Modal>
   );
-}
+
+      }
