@@ -9,6 +9,7 @@ import Dashboard from "./Components/Dashboard.jsx";
 import TakeNote from "./Components/TakeNote.jsx";
 import GetNote from "./Components/GetNotes.jsx";
 
+
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./Components/Login.jsx";
@@ -32,7 +33,6 @@ class App extends Component {
           <Route path="/Dashboard" component={Dashboard}></Route>
           <Route path="/TakeNote" component={TakeNote}></Route>
           <Route path="/GetNote" component={GetNote}></Route>
-
           <Route path="/resetpassword/:token" component={ResetPassword}></Route>
         </Switch>
       </Router>
