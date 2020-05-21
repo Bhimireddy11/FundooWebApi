@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import "./User.css";
-import UserController from "../Controller/UserController";
+//import UserController from "../Controller/UserController";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
 
@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.secondary
   }
 }));
-class Resetpassword extends Component {
+class abcd extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,21 +50,21 @@ class Resetpassword extends Component {
     console.log(this.state.token);
     console.log(resetDetails);
 
-    UserController.resetpassword(resetDetails, this.state.token).then(res => {
-      console.log("hiii...", res);
-      if (res.data.statusCode === 200) {
-        this.props.history.push("/login");
-        this.setState({
-          error: true,
-          message: "Login success"
-        });
-      } else {
-        this.setState({
-          error: true,
-          message: "Please Reregister"
-        });
-      }
-    });
+    // UserController.resetpassword(resetDetails, this.state.token).then(res => {
+    //   console.log("hiii...", res);
+    //   if (res.data.statusCode === 200) {
+    //     this.props.history.push("/login");
+    //     this.setState({
+    //       error: true,
+    //       message: "Login success"
+    //     });
+    //   } else {
+    //     this.setState({
+    //       error: true,
+    //       message: "Please Reregister"
+    //     });
+    //   }
+    // });
   };
 
   render() {
@@ -143,4 +143,4 @@ class Resetpassword extends Component {
   }
 }
 
-export default Resetpassword;
+export default abcd;

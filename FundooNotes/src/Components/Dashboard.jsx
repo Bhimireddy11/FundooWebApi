@@ -18,6 +18,8 @@ import ArchiveIcon from "@material-ui/icons/ArchiveOutlined";
 import DeleteIcon from "@material-ui/icons/DeleteOutline";
 //import EditSharpIcon from "@material-ui/icons/EditSharp";
 import Header from "./Header.jsx";
+import { flex } from '@material-ui/system';
+import SearchComponent from "./SearchComponent.jsx";
 import MenuNotes from "./MenuNotes.jsx";
 import ArchieveMenu from "./ArchieveMenu";
 import TakeNote from "./TakeNote";
@@ -32,6 +34,8 @@ const theme = createMuiTheme({
   overrides: {
     MuiDrawer: {
       paperAnchorLeft: {
+        display:flex,
+        
         left: 0,
         top: "65px",
         right: "auto",
@@ -52,12 +56,15 @@ class Dashboard extends Component {
       sideOpen: true,
       getNoteArr: [],
       getLabelArr: [],
+      searchNotesArr: [],
       archieveMenu: false,
       reminderMenu: false,
       editlabelsOpen: false,
       isGrid: false,
       profileLink: null,
       profileOpen: false,
+      searchOpen: false,
+      searchListOpen: false,
     };
   }
 
@@ -80,6 +87,17 @@ class Dashboard extends Component {
   };
 
   getNotes = async () => {
+    await NoteController.getAllNotes().then((res) => {
+      if (res.data.statusCode === 200) {
+        this.setState({
+          getNoteArr: res.data.data,
+        });
+      }
+    });
+    console.log("notes are:", this.state.getNoteArr);
+  };
+
+  Collaborator = async () => {
     await NoteController.getAllNotes().then((res) => {
       if (res.data.statusCode === 200) {
         this.setState({
@@ -125,6 +143,7 @@ class Dashboard extends Component {
       archieveMenu: false,
       trash: false,
       editlabelsOpen: false,
+      searchOpen: false,
     });
   };
 
@@ -136,6 +155,7 @@ class Dashboard extends Component {
       archieveMenu: true,
       trash: false,
       editlabelsOpen: false,
+      searchOpen: false,
     });
     console.log("arc state", this.state.archieveMenu);
   };
@@ -148,6 +168,7 @@ class Dashboard extends Component {
       trash: false,
       reminderMenu: true,
       editlabelsOpen: false,
+      searchOpen: false,
     });
     console.log("arc state", this.state.archieveMenu);
   };
@@ -155,6 +176,7 @@ class Dashboard extends Component {
     await this.setState({
       editlabelsOpen: !this.state.editlabelsOpen,
       openDialog: !this.state.openDialog,
+      searchOpen: false,
     });
   };
   handleTrashNotes = async () => {
@@ -165,8 +187,49 @@ class Dashboard extends Component {
       archieveMenu: false,
       trash: true,
       editlabelsOpen: false,
+      searchOpen: false,
     });
     console.log("arc state", this.state.trash);
+  };
+  onChangeSearchInput = async (event) => {
+    await this.setState({
+      searchBy: event.target.value,
+    });
+
+    if (this.state.searchBy !== "") {
+      await NoteController.searchbytitledescription(this.state.searchBy).then(
+        (res) => {
+          this.setState({ searchNotesArr: res });
+          console.log("The serch Arr :", this.state.searchNotesArr);
+          if (this.state.searchNotesArr.length !== 0) {
+            this.setState({
+              searchOpen: true,
+              notes: false,
+              reminder: false,
+              editLabel: false,
+              archieveMenu: false,
+              trash: false,
+              reminderMenu: false,
+              editlabelsOpen: false,
+            });
+          } else if (this.state.searchNotesArr.length === 0) {
+          }
+        }
+      );
+    } else {
+      if (this.state.searchBy === "") {
+        await this.setState({
+          searchOpen: true,
+          notes: false,
+          reminder: false,
+          editLabel: false,
+          archieveMenu: false,
+          trash: false,
+          reminderMenu: false,
+          editlabelsOpen: false,
+        });
+      }
+    }
   };
 
   render() {
@@ -194,6 +257,16 @@ class Dashboard extends Component {
           handleProfileOpen={this.handleProfileOpen}
           profileLink={this.state.profileLink}
           getProfilePic={this.getProfileLink}
+          onChangeSearchInput={this.onChangeSearchInput}
+          searchOpen={this.state.searchOpen}
+        />
+        <SearchComponent
+          searchOpen={this.state.searchOpen}
+          searchNotesArr={this.state.searchNotesArr}
+          getNoteArr={this.state.getNoteArr}
+          getNotes={this.getNotes}
+          getLabels={this.getLabels}
+          getLabelArr={this.state.getLabelArr}
         />
         <MenuNotes
           notes={this.state.notes}

@@ -46,14 +46,14 @@ class GetLabelsInNoteMenu extends Component {
         this.state.noteId,
         this.state.labelId
       ).then((res) => {
-        console.log(this.state.noteId, "check here mukeshs please");
+        console.log(this.state.noteId, "check here raji please");
         if (res.status === 200) {
           console.log("Label added to the note successfully");
         }
         this.props.getNotes();
       });
     } else if (this.state.checkedLabel === false) {
-      console.log(this.state.noteId, "check here mukeshs please");
+      console.log(this.state.noteId, "check here raji please");
       await LabelController.deletelabelfromnote(
         this.state.noteId,
         this.state.labelId
@@ -66,10 +66,7 @@ class GetLabelsInNoteMenu extends Component {
     this.props.getNotes();
   };
 
-  // componentDidUpdate(props) {
-  //   props.getLabel();
-  // }
-
+  
   render() {
     console.log("My array is ", this.state.allLabels);
     if (this.props.allLabels !== undefined) {

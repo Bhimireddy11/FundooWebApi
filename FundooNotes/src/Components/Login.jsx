@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -19,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 class Login extends Component {
+  
   constructor(props) {
     super(props);
 
@@ -113,27 +113,10 @@ class Login extends Component {
     };
     console.log(loginDetails);
 
-    UserController.login(loginDetails).then((res) => {
-      console.log("hiii...", res.data);
-      alert("check here ");
-      if (res.data.statusCode === 200) {
-        console.log(res);
-        let token = res.data.token;
-        console.log(token, "hello");
-
-        console.log("token", token);
-        localStorage.setItem("logintoken", token);
-        localStorage.setItem("owner", loginDetails.email);
-        console.log(res.data.message);
-        console.log("token is", token);
-        this.props.history.push("/dashboard/" + token);
-        this.setState({
-          error: true,
-          message: "Login Success",
-        });
-      }
-    });
-  };
+  
+  
+    }
+  
 
   render() {
     const classes = { useStyles };
@@ -156,7 +139,7 @@ class Login extends Component {
               <span style={{ color: "#1a73e8" }}>e</span>
             </h2>
             <Typography component="h1" variant="h5" color="primary">
-              Login details
+              Login Form
             </Typography>
             <div>
               <br />
@@ -195,45 +178,53 @@ class Login extends Component {
                 <br />
               </div>
 
-              <div className="button-style">
-                <Button
-                  id="button"
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  className={classes.submit}
-                  onClick={this.onSubmit}
-                >
-                  Sign In
-                </Button>
-              </div>
-              <div>
+              <div className="center">
+            <div style={{ paddingBlockEnd: "3%", paddingBottom: "3%" }}>
+             <a href="/ForgotPassword">ForgotPassword?</a>
+             </div>
+                  </div>
+           
+        <div className="center">
+               <div className="col s6 Reg-button">
+                  <Button
+        
+                        size="medium"
+                       variant="contained"
+                   color="primary"
+                   
+                       className={classes.paper}
+                      style={{ color: "blue", margin: "0%",
+                      marginBottom: "6%",
+                     }}
+                       onClick={this.onSubmit}
+                     >
+                       login
+                    </Button>
+                 </div>
+                 <div className="row">
+                  <div className="col s6 Reg-button">
+                   <Button
+                                         size="medium"
+                      
+                      variant="contained"
+                 color="primary"
+
+                   className={classes.paper}
+                     style={{
+                         color: "black",
+                      margin: "0%",
+                     marginBottom: "8%",
+                    //  marginRight:"50%"
+                     }}
+                    onClick={this.loginPage}
+                   >
+                    <a href="/Register">signup</a>
+                   </Button>
+                 </div>
+
+              
                 <br />
               </div>
-              <div style={{ paddingRight: "177px", paddingBottom: "10px" }}>
-                <a href="/forgetpassword">forget password?</a>
-                
-              </div>
-              <div
-                style={{
-                  marginLeft: "215px",
-                  marginTop: "-36px",
-                  paddingRight: "191px",
-                }}
-              >
-                <Button
-                  variant="outlined"
-                  size="medium"
-                  color="primary"
-                  className={classes.paper}
-                  style={{ color: "blue" }}
-                  onClick={this.signupPage}
-                >
-                  Signup
-                </Button>
-              </div>
-              <div>
-                <br />
               </div>
             </form>
           </div>

@@ -1,0 +1,18 @@
+[
+    {
+            "user Id":"1",
+             "note id":"1",
+             "title": "abc",
+             "descrption":"banglore",
+             "isArchiv":"false",
+             "ispin":"false",
+             "isTrash":"false",
+             "createdAt":"19-05-2020",
+             "colour":"blue",
+             "updatedAt":" 19-05-2020 "
+
+
+
+
+    }
+]

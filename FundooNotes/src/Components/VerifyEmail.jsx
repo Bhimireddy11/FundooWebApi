@@ -27,12 +27,7 @@ class VerifyEmail extends Component {
           message: "Email Verified"
         });
       }
-      // else {
-      //   this.setState({
-      //     error: true,
-      //     message: 'Please Reregister'
-      //   })
-      // }
+     
     });
   };
 

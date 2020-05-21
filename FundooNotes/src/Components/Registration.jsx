@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -7,7 +6,8 @@ import "./User.css";
 import UserController from "../Controller/UserController";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
-import Icon from '@material-ui/core/Icon';
+import Register from "./Register.json";
+
 const useStyles = makeStyles((theme) => ({
   root: {},
 
@@ -15,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     textAlign: "center",
     color: theme.palette.text.secondary,
-    
   },
 }));
 class Registration extends Component {
@@ -37,7 +36,7 @@ class Registration extends Component {
       message: "",
     };
   }
-
+  //var Data = require('json!../data/yourfile.json');
   loginPage = () => {
     this.props.history.push("/login");
   };
@@ -140,21 +139,22 @@ class Registration extends Component {
     const classes = { useStyles };
 
     return (
-      <div id="form-structure-reg">
-          <center>
-        <Card
-          style={{
-            width: "180%",
+      // <div className="posts">
+      //   {Register.map(post =>{
+      //   return(
+      //     <>
+      //     <h4> {post.UserName}</h4>
+      //     <h4> {post.Email}</h4>
+      //     <h4> {post.phoneNumber}</h4>
+      //     <h4> {post.Password}</h4>
 
-            display: "flex",
-            justifyContent: "right-center",
-            flexDirection: "column",
-            height: "75vh",
-            boxShadow: "0px 0px 10px 2px",
-            display:""
-          }}
-        >
-       
+    
+      //     </>
+      //   )
+      //   })}
+      
+      <div id="form-structure-reg">
+        <Card style={{ width: "100%" }}>
           <div className={classes.paper}>
             <h2>
               <span style={{ color: "#1a73e8" }}>F</span>
@@ -229,32 +229,28 @@ class Registration extends Component {
                 className={classes.paper}
                 helperText={this.helperphonenumberMethod()}
               />
-           <div className="row">
-                  <div className="col s6 Reg-button">
-                    <Button
-        
-                      size="medium"
-                      variant="contained"
+              <div className="button-style">
+                <Button
+                  id="button"
+                  type="submit"
+                  variant="contained"
                   color="primary"
-                      className={classes.paper}
-                      
-                      style={{ color: "blue", margin: "1%" }}
-                      onClick={this.onSubmit}
-                     
-                    >
-                      REGISTER
-         
-                    </Button>
-                  </div>
-              
+                  className={classes.submit}
+                  onClick={this.onSubmit}
+                >
+                  Sign In
+                </Button>
+              </div>
+              <div>
                 <br />
               </div>
             </form>
           </div>
         </Card>
-        </center>
       </div>
+  // </div>
     );
+      
   }
 }
 

@@ -38,6 +38,9 @@ const theme = createMuiTheme({
         display: "flex",
         position: "relative",
         justifyContent: "space-between",
+        // alignContent:stretch,
+        flexDirection:"row",
+        flexflow:"row"
       },
     },
   },
@@ -54,12 +57,14 @@ class Header extends Component {
       changePic: false,
       profileLink: this.props.profileLink,
       getProfilePic: this.props.getProfilePic,
+      onChangeSearchInput: this.props.onChangeSearchInput,
     };
   }
   componentWillReceiveProps(props) {
     this.setState({
       profileLink: props.profileLink,
       getProfilePic: props.getProfilePic,
+      onChangeSearchInput: props.onChangeSearchInput,
     });
   }
 
@@ -74,6 +79,13 @@ class Header extends Component {
   };
   handleEditPicture = async () => {
     await this.setState({ changePic: !this.state.changePic });
+  };
+
+  handleSignout = async () => {
+    alert("inside signout");
+
+    localStorage.clear();
+    window.location = "http://localhost:3000/login";
   };
 
   render() {
@@ -108,8 +120,11 @@ class Header extends Component {
                       </Typography>
                     </div>
 
-                    <div className="search" fxlayoutgap="5px">
-                      <InputBase placeholder="            Search" />
+                    <div className="search" fxlayoutgap="50px">
+                      <InputBase
+                        placeholder="            Search"
+                        onChange={this.props.onChangeSearchInput}
+                      />
                       <div className="searchButton">
                         <Tooltip title="search">
                           <IconButton>
@@ -134,6 +149,7 @@ class Header extends Component {
                       <div>
                         <IconButton>
                           <Tooltip title="Grid View">
+                        
                             <img
                               src={require("../Assets/grid.svg")}
                               alt=""
@@ -267,7 +283,7 @@ class Header extends Component {
 
                                 <div className="signout-button-div">
                                   <button
-                                    onClick={this.props.handleSignout}
+                                    onClick={this.handleSignout}
                                     className="signout-button2"
                                   >
                                     Sign Out

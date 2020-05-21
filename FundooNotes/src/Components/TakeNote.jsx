@@ -25,6 +25,7 @@ import PersonAddIcon from "@material-ui/icons/PersonAddOutlined";
 import ArchiveIcon from "@material-ui/icons/ArchiveOutlined";
 import MoreVertIcon from "@material-ui/icons/MoreVertOutlined";
 import AddAlertIcon from "@material-ui/icons/AddAlertOutlined";
+//import GetNotes from "./GetNotes";
 
 import { ToastContainer, toast } from "react-toastify";
 
@@ -73,6 +74,7 @@ class TakeNote extends Component {
       reminderAnchor: null,
       selectedDate: "",
       remState: null,
+    
 
       manycolor: [
         { name: "Red", colorCode: "red" },
@@ -218,12 +220,7 @@ class TakeNote extends Component {
     });
   };
 
-  // async openCard() {
-  //   await this.setState({ open: !this.state.open });
-  //   console.log("In open card");
-  //   console.log(this.state.open);props
-  // }
-
+  
   onClickTakeNote = async () => {
     this.setState({ open: true });
   };
@@ -308,10 +305,12 @@ class TakeNote extends Component {
         {!this.state.open ? (
           <div className="show">
             <Card className="notesCard">
+              
               <InputBase
                 className="takeNote"
                 style={{
                   marginTop: "0px",
+                  
                 }}
                 onClick={this.onClickTakeNote}
                 placeholder="   Take a notes..."
@@ -348,7 +347,7 @@ class TakeNote extends Component {
                       <img
                         src={require("../Assets/pin.svg")}
                         alt=""
-                        style={{ fontSize: "16px" }}
+                        style={{ fontSize: "20px" }}
                       />
                     </IconButton>
                   ) : (
@@ -386,7 +385,7 @@ class TakeNote extends Component {
               {/* {displaylabels}
           {displaycollabs} */}
               {/* </Toolbar> */}
-              <div className="toolbarAndClose">
+              <div className="toolbarAndClose3">
                 {/* <Toolbar className="CardTool"> */}
                 <div className="CardToolbar">
                   <AddAlertIcon
@@ -406,6 +405,7 @@ class TakeNote extends Component {
                     onClick={this.changeColor}
                     style={{ fontSize: "16px" }}
                   />
+
                   <Menu
                     id="simple-menu"
                     open={this.state.colorOpen}
@@ -431,7 +431,7 @@ class TakeNote extends Component {
                 <div className="CardToolbar">
                   <MoreVertIcon style={{ fontSize: "16px" }} />
                 </div>
-                {/* </Toolbar> */}
+              
                 <div className="closeButton">
                   <Button onClick={this.addNotes} style={{ fontSize: "11px" }}>
                     <b>Close</b>
@@ -472,6 +472,21 @@ class TakeNote extends Component {
                         />
                       </form>
                     </div>
+                    {/* <div id="close_button">
+                      <Tooltip
+                        // TransitionComponent={Fade}
+                        TransitionProps={{ timeout: 100 }}
+                        // title={saveclose}
+                        arrow
+                      >
+                        <Button onClick={this.onCloseDialog}>Close</Button>
+                      </Tooltip>
+                    </div> */}
+                    {/* <Button variant="contained" color="primary">
+                      close
+                      </Button> */}
+                      
+        
                   </Toolbar>
                   <Toolbar id="createlabelnote_field">
                     <div className="rem-save">
