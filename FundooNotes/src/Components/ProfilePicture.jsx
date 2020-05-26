@@ -63,18 +63,27 @@ class ProfilePicture extends React.PureComponent {
       <div>
         <div className="choose-file">
           <input type="file" onChange={this.onChange} />
-          
-
-          
         </div>
-        
+        <div style={{ display: "flex" }}>
+          <div className="upload-file">
+            <button className="signout-button" onClick={this.onFormSubmit}>
+              UPLOAD
+            </button>
+          </div>
+          {
+            <div className="upload-file1">
+              <button
+                className="signout-button"
+                onClick={this.handleProfilepicRemove}
+              >
+                REMOVE
+              </button>
+            </div>
           }
         </div>
-  
       </div>
     );
   }
 }
-
 
 export default ProfilePicture;

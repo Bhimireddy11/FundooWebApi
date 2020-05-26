@@ -42,6 +42,7 @@ import fillpin from "../Assets/fillpin.svg";
 import NoteController from "../Controller/NoteController";
 import LabelController from "../Controller/LabelController";
 import GetLabelsInNoteMenu from "./GetLabelsInNoteMenu";
+import Note from "../Data/Note.json"
 const saveclose = "Save & Close";
 let array = [];
 let arrcollab1 = [];
@@ -96,6 +97,7 @@ class GetNotes extends Component {
       reminderAnchor: null,
       remState: this.props.data.reminder,
       selectedDate: this.props.data.reminder,
+      service: "advance",
     };
     this.handleEdit = this.handleEdit.bind(this);
     this.editNote = this.editNote.bind(this);
@@ -290,6 +292,7 @@ class GetNotes extends Component {
       color: this.state.colour,
       // labelName: this.state.labelName,
       reminder: this.state.selectedDate,
+      service: "advance",
     };
     await NoteController.editNotes(noteDetails).then((res) => {
       if (res.status === 200) {
@@ -515,6 +518,21 @@ class GetNotes extends Component {
     await this.setState({ openDialog: false });
   };
   render() {
+    // return(
+    //   <div>
+    //   {Note.addNotes.map(function(addNotes,userid){
+
+    //     <h5>{addNotes.title}</h5>
+    //     <h5>{addNotes.description}</h5>
+        
+    //       <div className="ispinned">
+    //         <h5>{addNotes.ispinned}</h5>
+    //         </div>
+           
+    //   )}}    
+    //  </div>
+    // )
+        
     if (this.state.remState !== "") {
       let date = new Date(this.state.remState);
       let val = "";
@@ -624,7 +642,63 @@ class GetNotes extends Component {
     }
 
     let displaycollabs = this.state.collaborators.map((item) => {
-   
+      return (
+        <div className="collab-style">
+          <Tooltip title={item.collaborator}>
+            <Avatar
+              id="avatar"
+              src=" "
+              onClick={this.handleCollabOpen}
+            />
+          </Tooltip>
+        </div>
+      );
+    });
+    let collabs;
+    collabs = this.state.collaborators.map((item) => {
+      return (
+        <div className="collab-owner">
+          <div style={{ marginLeft: "23px" }}>
+            <Avatar src=" " />
+          </div>
+          <div style={{ marginLeft: "73px", marginTop: "-52px" }}>
+            <h4>{item.email}</h4>
+          </div>
+          <div style={{ marginTop: "-3px" }}>
+            <IconButton
+              onClick={(data) => {
+                console.log("collabs", item.email);
+
+                this.handleRemoveCollab(data, item.email);
+              }}
+            >
+              <CloseIcon />
+            </IconButton>
+          </div>
+        </div>
+      );
+    });
+
+    const color1 = this.state.manycolor.map((color) => {
+      return (
+        <Tooltip
+          //TransitionComponent={Fade}
+          TransitionProps={{ timeout: 100 }}
+          title={color.name}
+        >
+          <IconButton
+            style={{
+              background: color.name,
+              margin: "2%",
+              // width:"40%",
+            }}
+            value={color.colorCode}
+            onClick={this.changeNoteColor}
+          />
+        </Tooltip>
+      );
+    });
+
     return (
       <Card
         className={!this.props.isGrid ? "cardlist" : "gridlist"}
@@ -1268,4 +1342,5 @@ class GetNotes extends Component {
     );
   }
 }
+
 export default GetNotes;

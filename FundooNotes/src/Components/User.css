@@ -24,6 +24,7 @@ z.headmain {
   top: 10px;
   right: 50px;
   bottom: 10px;
+  
 }
 
 .fundoohead {
@@ -33,10 +34,11 @@ z.headmain {
 
 button {
   position: relative;
-  left: -30px;
+  left: -25Px;
   top: 10px;
   right: 102px;
   bottom: 103px;
+
 }
 
 .mainLogin {
@@ -53,6 +55,7 @@ button {
 .Register {
   padding-left: 18%;
   padding-right: 11%;
+  
 }
 
 .Login {
@@ -94,6 +97,7 @@ button {
 #button {
   margin-left: 9.3%;
   display: flex;
+  
 }
 
 #forget-card {

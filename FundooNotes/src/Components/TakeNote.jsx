@@ -25,7 +25,7 @@ import PersonAddIcon from "@material-ui/icons/PersonAddOutlined";
 import ArchiveIcon from "@material-ui/icons/ArchiveOutlined";
 import MoreVertIcon from "@material-ui/icons/MoreVertOutlined";
 import AddAlertIcon from "@material-ui/icons/AddAlertOutlined";
-//import GetNotes from "./GetNotes";
+import GetNotes from "./GetNotes";
 
 import { ToastContainer, toast } from "react-toastify";
 
@@ -40,7 +40,7 @@ class TakeNote extends Component {
       open: false,
       menu: false,
       openNote: false,
-      openTooltip: false,
+      openTooltip:true ,
       title: "",
       description: "",
       createNote: false,
@@ -70,10 +70,14 @@ class TakeNote extends Component {
       disable: true,
       collabName: "",
       err1: false,
+      err2: true,
+      
+
       reminderMenu: false,
       reminderAnchor: null,
       selectedDate: "",
       remState: null,
+      
     
 
       manycolor: [
@@ -190,6 +194,7 @@ class TakeNote extends Component {
         color: this.state.colour,
         // labelName: this.state.labelName,
         reminder: this.state.selectedDate,
+        service: "advance",
       };
       await NoteController.editNotes(noteDetails).then((res) => {
         console.log("please check here", res);
@@ -220,7 +225,9 @@ class TakeNote extends Component {
     });
   };
 
-  
+  // onClickclose = async () => {
+  //   this.setState({ open: false });
+  // };
   onClickTakeNote = async () => {
     this.setState({ open: true });
   };
@@ -238,6 +245,7 @@ class TakeNote extends Component {
     this.setState({ description: event.target.value });
   };
 
+  
   onClickTrash = async (event) => {
     this.setState({ isTrashed: true });
   };
@@ -267,6 +275,7 @@ class TakeNote extends Component {
       colour: this.state.color,
       reminder: this.state.reminder,
       pinned: this.state.pinned,
+      service: "advance",
     };
     console.log(noteDetails);
     await NoteController.createNote(noteDetails).then((res) => {
@@ -293,6 +302,7 @@ class TakeNote extends Component {
             style={{
               background: color.name,
               margin: "2%",
+              
             }}
             value={color.colorCode}
             onClick={this.changeNoteColor}
@@ -414,6 +424,7 @@ class TakeNote extends Component {
                     transformOrigin={{
                       vertical: "right",
                       horizontal: "right",
+                      // width:"50%",
                     }}
                   >
                     <div id="color-align">{color1}</div>
@@ -434,7 +445,7 @@ class TakeNote extends Component {
               
                 <div className="closeButton">
                   <Button onClick={this.addNotes} style={{ fontSize: "11px" }}>
-                    <b>Close</b>
+                    <b>close</b>
                   </Button>
                 </div>
                 <ToastContainer />

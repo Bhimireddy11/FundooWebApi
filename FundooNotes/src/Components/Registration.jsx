@@ -113,11 +113,14 @@ class Registration extends Component {
     console.log("inside onsubmit");
     alert("verification link has been sent to mail");
     var registrationDetails = {
-      name: this.state.Username,
+      firstName: this.state.Username,
 
       email: this.state.Email,
       password: this.state.Password,
       phonenumber: this.state.Phonenumber,
+      lastName:"raji",
+
+      service: "advance",
     };
     console.log(registrationDetails);
     UserController.register(registrationDetails).then((res) => {

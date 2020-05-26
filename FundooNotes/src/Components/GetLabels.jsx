@@ -92,7 +92,7 @@ class GetLabels extends PureComponent {
         labelName: this.state.labelName,
         labelId: this.state.labelId,
       };
-      console.log("check here mukesh", labelDetails.labelId);
+      console.log("check here ", labelDetails.labelId);
       await LabelController.editlabelforuser(labelDetails).then((res) => {
         alert("after controller ");
         if (res.status === 200) {

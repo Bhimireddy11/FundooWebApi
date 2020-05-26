@@ -54,7 +54,7 @@ var controller = {
   },
   createNote(noteDetails) {
     console.log(token);
-    return axios.post(`http://localhost:3000/notes/create`, noteDetails, {
+    return axios.post(`http://fundoonotes.incubation.bridgelabz.com/api/notes/addNotes `, noteDetails, {
       headers: { token: token, "Content-type": "application/json " },
     });
   },
@@ -74,7 +74,7 @@ var controller = {
     );
   },
   getAllNotes() {
-    return axios.get(`http://localhost:3000/note/getallnotes/${token}`);
+    return axios.get(`http://fundoonotes.incubation.bridgelabz.com/api/notes/1/user/notes `);
   },
   restorenote(id) {
     return axios.put(`http://localhost:3000/notes/restore/${id}`, null, {

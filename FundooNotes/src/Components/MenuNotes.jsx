@@ -9,6 +9,7 @@ export class MenuNotes extends Component {
       getNoteArr: this.props.getNoteArr,
       getLabelArr: this.props.getLabelArr,
       isGrid: this.props.isGrid,
+      service: "advance",
     };
   }
   componentWillReceiveProps(props) {

@@ -110,6 +110,8 @@ class Login extends Component {
     var loginDetails = {
       email: this.state.Email,
       password: this.state.Password,
+      service: "advance",
+      
     };
     console.log(loginDetails);
 
@@ -194,7 +196,8 @@ class Login extends Component {
                    
                        className={classes.paper}
                       style={{ color: "blue", margin: "0%",
-                      marginBottom: "6%",
+                      marginBottom: "-11%",
+                      marginLeft:"50%"
                      }}
                        onClick={this.onSubmit}
                      >
@@ -214,7 +217,7 @@ class Login extends Component {
                          color: "black",
                       margin: "0%",
                      marginBottom: "8%",
-                    //  marginRight:"50%"
+                     marginRight:"20%"
                      }}
                     onClick={this.loginPage}
                    >

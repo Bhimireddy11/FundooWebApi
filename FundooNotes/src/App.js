@@ -10,7 +10,6 @@ import TakeNote from "./Components/TakeNote.jsx";
 import GetNote from "./Components/GetNotes.jsx";
 import abcd from "./Components/abcd.jsx";
 import dummy from "./Components/dummy.jsx";
-
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./Components/Login.jsx";
