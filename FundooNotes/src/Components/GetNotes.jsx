@@ -42,7 +42,7 @@ import fillpin from "../Assets/fillpin.svg";
 import NoteController from "../Controller/NoteController";
 import LabelController from "../Controller/LabelController";
 import GetLabelsInNoteMenu from "./GetLabelsInNoteMenu";
-import Note from "../Data/Note.json"
+import Note from "../Data/Note.json";
 const saveclose = "Save & Close";
 let array = [];
 let arrcollab1 = [];
@@ -55,6 +55,7 @@ class GetNotes extends Component {
       edit: false,
       open: false,
       label: [],
+     
       allLabels: this.props.data.list,
       manycolor: [
         { name: "Red", colorCode: "red" },
@@ -454,6 +455,7 @@ class GetNotes extends Component {
         console.log("Successfully unpinned and archived");
       }
     });
+
   };
 
   handleisTrashed = async () => {
@@ -518,21 +520,23 @@ class GetNotes extends Component {
     await this.setState({ openDialog: false });
   };
   render() {
-    // return(
-    //   <div>
-    //   {Note.addNotes.map(function(addNotes,userid){
-
-    //     <h5>{addNotes.title}</h5>
-    //     <h5>{addNotes.description}</h5>
+     return(
+      <div>
         
-    //       <div className="ispinned">
-    //         <h5>{addNotes.ispinned}</h5>
-    //         </div>
-           
-    //   )}}    
-    //  </div>
-    // )
+      {Note.addNotes.map(function(addNotes){
+       return <div>
+       <card>
+         <h5>{addNotes.title}</h5>
+       <h5>{addNotes.description}</h5>
         
+         
+            </card>
+            console.log();
+        </div>  
+   } )} 
+      </div>
+  
+     )
     if (this.state.remState !== "") {
       let date = new Date(this.state.remState);
       let val = "";
@@ -691,6 +695,7 @@ class GetNotes extends Component {
               background: color.name,
               margin: "2%",
               // width:"40%",
+              
             }}
             value={color.colorCode}
             onClick={this.changeNoteColor}
@@ -834,6 +839,8 @@ class GetNotes extends Component {
                           transformOrigin={{
                             vertical: "right",
                             horizontal: "right",
+                            // width: "113%",
+                            //   marginleft:" 5%",
                           }}
                         >
                           <div className="color-align">{color1}</div>

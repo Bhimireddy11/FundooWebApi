@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { Card, IconButton } from "@material-ui/core";
 import NoteController from "../Controller/NoteController";
+//import DummyController from "../Controller/DummyController";
+
+import ReactDOM from 'react-dom';
+import Note from "../Data/Note.json";
 import {
   InputBase,
   Toolbar,
@@ -26,11 +30,24 @@ import ArchiveIcon from "@material-ui/icons/ArchiveOutlined";
 import MoreVertIcon from "@material-ui/icons/MoreVertOutlined";
 import AddAlertIcon from "@material-ui/icons/AddAlertOutlined";
 //import GetNotes from "./GetNotes";
+import axios from 'axios';
 
 import { ToastContainer, toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 
+
+
+
+// const  Note = {
+//   "object": {
+//     "title": "raji",
+//     "description": "banglore"
+  
+    
+//   }
+// };
+var Data = require("../Data/Note.json");
 let rem = [];
 class dummy extends Component {
   constructor(props) {
@@ -76,9 +93,7 @@ class dummy extends Component {
       reminderAnchor: null,
       selectedDate: "",
       remState: null,
-      
-    
-
+  Note:[],
       manycolor: [
         { name: "Red", colorCode: "red" },
         { name: "Cyan", colorCode: "Cyan" },
@@ -113,7 +128,17 @@ class dummy extends Component {
   //   console.log(e);
   // };
 
-
+  componentWillMount() {
+    axios.get('../Data/Note.json') // JSON File Path
+      .then( response => {
+        this.setState({
+        Note: response.data
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+   }
 
 
   handleIsArchieved = async () => {
@@ -296,8 +321,38 @@ class dummy extends Component {
     });
   };
   render() {
+   
+  // return (
+  //   <div>
+  //     {
+  //       Object.keys(NOte.object).map((key, i) => (
+  //         <p key={i}>
+  //           <span>Key title: {key}</span>
+  //           <span>description: {Note.object[key]}</span>
+  //         </p>
+  //       ))
+  //       }
+  //   </div>
+  // );
+  const Notes = this.state.Note;
+  let addnotes = '';
+  if(addnotes.length > 0) {
+    addnotes = addnotes.map( addnotes => {
+      return (
+        <noteDetails key={addnotes.title}   description={addnotes.description} />
+ 			)
+ 	})
+   }
+   return(
+ 	<div className="row container">
+ 		{Notes}
+ 	</div>
+   )
+
+        
     const color1 = this.state.manycolor.map((color) => {
       return (
+       
         <Tooltip
           //TransitionComponent={Fade}
           TransitionProps={{ timeout: 100 }}
@@ -526,6 +581,7 @@ class dummy extends Component {
           </div>
         )}
       </div>
+     
     );
   }
 }

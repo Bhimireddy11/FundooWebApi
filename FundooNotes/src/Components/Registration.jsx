@@ -241,7 +241,7 @@ class Registration extends Component {
                   className={classes.submit}
                   onClick={this.onSubmit}
                 >
-                  Sign In
+                  Sign UP
                 </Button>
               </div>
               <div>

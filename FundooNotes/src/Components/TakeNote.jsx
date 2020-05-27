@@ -31,6 +31,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 
+
 let rem = [];
 class TakeNote extends Component {
   constructor(props) {
@@ -78,7 +79,8 @@ class TakeNote extends Component {
       selectedDate: "",
       remState: null,
       
-    
+
+      
 
       manycolor: [
         { name: "Red", colorCode: "red" },
@@ -444,7 +446,7 @@ class TakeNote extends Component {
                 </div>
               
                 <div className="closeButton">
-                  <Button onClick={this.addNotes} style={{ fontSize: "11px" }}>
+                  <Button onClick={this.handleClose} style={{ fontSize: "11px" }}>
                     <b>close</b>
                   </Button>
                 </div>

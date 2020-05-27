@@ -10,7 +10,7 @@ var controller = {
   register(registrationDetails) {
     console.log("controller register method ", registrationDetails);
     return axios.post(
-      "http://fundoonotes.incubation.bridgelabz.com/api/user/userSignUp",
+      //"http://fundoonotes.incubation.bridgelabz.com/api/user/userSignUp",
      //"http://fundoonotes.incubation.bridgelabz.com/api/user/userSignUp?access_token=rajibhimireddy",
 
       registrationDetails
@@ -25,7 +25,7 @@ var controller = {
   },
   login(loginDetails) {
     console.log("controller login method ", loginDetails);
-    return axios.post("http://fundoonotes.incubation.bridgelabz.com/api/user/login?access_token=rajibhimireddy", loginDetails);
+    return axios.post("http://fundoonotes.incubation.bridgelabz.com/api/user/login?access_token=raji");
   },
   forgotpassword(forgotDetails) {
     console.log("controller forgotpassword method ", forgotDetails);

@@ -182,7 +182,7 @@ class Login extends Component {
 
               <div className="center">
             <div style={{ paddingBlockEnd: "3%", paddingBottom: "3%" }}>
-             <a href="/ForgotPassword">ForgotPassword?</a>
+             <a href="/ForgetPassword">ForgotPassword?</a>
              </div>
                   </div>
            

@@ -10,6 +10,7 @@ import TakeNote from "./Components/TakeNote.jsx";
 import GetNote from "./Components/GetNotes.jsx";
 import abcd from "./Components/abcd.jsx";
 import dummy from "./Components/dummy.jsx";
+// import todoo from "./Components/todoo.js";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./Components/Login.jsx";
@@ -36,6 +37,7 @@ class App extends Component {
           <Route path="/abcd" component={abcd}></Route>
           <Route path="/resetpassword/:token" component={ResetPassword}></Route>
           <Route path="/dummy" component={dummy}></Route>
+          {/* <Route path="/todoo" component={todoo}></Route> */}
         </Switch>
       </Router>
     );
