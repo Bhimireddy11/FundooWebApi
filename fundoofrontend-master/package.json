@@ -7,7 +7,7 @@
     "@material-ui/icons": "^4.9.1",
     "@syncfusion/ej2-react-grids": "^17.4.44",
     "@syncfusion/ej2-react-splitbuttons": "^17.4.43",
-    "axios": "^0.19.1",
+    "axios": "^0.21.1",
     "bootstrap": "^4.4.1",
     "classnames": "^2.2.6",
     "moment": "^2.24.0",
